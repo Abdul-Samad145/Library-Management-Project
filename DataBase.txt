@@ -1,0 +1,83 @@
+   CREATE DATABASE library2;
+
+USE library2;
+
+CREATE TABLE books2 (
+  id INT AUTO_INCREMENT unique,
+  title VARCHAR(255) NOT NULL,
+  author VARCHAR(255) NOT NULL,
+  isbn VARCHAR(100) NOT NULL UNIQUE,
+  publisher VARCHAR(255),
+  year INT,
+  category VARCHAR(100),
+  quantity INT
+);
+
+ALTER TABLE books2 ADD UNIQUE (title);
+
+
+
+
+
+CREATE TABLE issued_books2 (
+  id INT AUTO_INCREMENT unique,
+  book_name VARCHAR(255),
+  student_name VARCHAR(255),
+  student_id VARCHAR(100),
+  issue_date DATE,
+  return_date DATE
+);
+
+
+use library2;
+
+CREATE TABLE penalties (
+  id INT AUTO_INCREMENT unique,
+  student_id VARCHAR(100),
+  student_name VARCHAR(255),
+  book_name VARCHAR(255),
+  issue_date DATE,
+  return_date DATE,
+  penalty_amount INT
+);
+
+
+
+
+
+
+
+
+INSERT INTO penalties (student_id, student_name, book_name, issue_date, return_date, penalty_amount)
+SELECT
+    i.student_id,
+    i.student_name,
+    i.book_name,
+    i.issue_date,
+    i.return_date,
+    DATEDIFF(r.actual_return_date, i.return_date) * 10 AS penalty_amount
+FROM issued_books2 i, returned_books r
+WHERE i.student_id = r.student_id
+  AND i.book_name = r.book_name
+  AND r.actual_return_date > i.return_date;
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE returned_books (
+  id INT AUTO_INCREMENT unique,
+  student_id VARCHAR(20),
+  student_name VARCHAR(100),
+  book_name VARCHAR(100),
+  actual_return_date DATE
+
+);
+
+
+
