@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Search Book</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2 id="e">Admin</h2>
+    <a href="home.html"><button><i class="fas fa-home"></i> Home</button></a><br>
+    <a href="dashboard.html"><button><i class="fas fa-dashboard"></i> Dashboard</button></a>
+   <br>
+    <a href="addbook.html"><button><i class="fas fa-book"></i> Add Book</button></a><br>
+    <a href="issuebook.html"><button><i class="fas fa-book-open"></i> Issue Book</button></a><br>
+    <a href="searchbook.html"><button><i class="fas fa-search"></i> Search Book</button></a><br>
+    <a href="issue1.html"><button><i class="fas fa-list"></i> Issued Books</button></a><br>
+    <a href="return.html"><button><i class="fas fa-undo"></i> Return Book</button></a><br>
+    <a href="fine.html"><button><i class="fas fa-exclamation-triangle"></i> Penalty</button></a><br>
+    <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+  </div>
+
+  <div class="search-wrapper">
+    <h2>Search for a Book</h2>
+    <input type="text" id="searchInput" placeholder="Enter book title...">
+    <button onclick="searchBook()">🔍 Search</button>
+    <div class="result" id="searchResult"></div>
+
+
+    
+    <table id="resultTable" style="display: none; width: 100%; margin-top: 20px;" border="3">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>ISBN</th>
+          <th>Publisher</th>
+          <th>Year</th>
+          <th>Category</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script>
+    async function searchBook() {
+      const title = document.getElementById('searchInput').value;
+      
+      try {
+        const response = await fetch(`http://localhost:5000/searchbook?title=${encodeURIComponent(title)}`);
+        if (!response.ok) throw new Error('Network response was not ok');
+        const data = await response.json();
+        displayResults(data);
+      } catch (error) {
+        console.error('Error:', error);
+        const resultsDiv = document.getElementById('searchResult');
+        if (resultsDiv) {
+          resultsDiv.innerHTML = '<p>Error connecting to server. Please try again later.</p>';
+        }
+      }
+    }
+
+
+    
+    function displayResults(data) {
+      const table = document.getElementById('resultTable');
+      const tbody = table.querySelector('tbody');
+      tbody.innerHTML = ''; // Clear previous results
+      
+      if (data && data.length > 0) {
+        table.style.display = 'table';
+        data.forEach(book => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${book.id || ''}</td>
+            <td>${book.title || ''}</td>
+            <td>${book.author || ''}</td>
+            <td>${book.isbn || ''}</td>
+            <td>${book.publisher || ''}</td>
+            <td>${book.year || ''}</td>
+            <td>${book.category || ''}</td>
+            <td>${book.quantity || ''}</td>
+          `;
+          tbody.appendChild(row);
+        });
+      } else {
+        table.style.display = 'none';
+        document.getElementById('searchResult').innerHTML = '<p>No books found.</p>';
+      }
+    }
+  </script>
+
+</body>
+</html>

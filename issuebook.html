@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Issue Book</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2 id="e"> Admin</h2>
+   
+    <a href="home.html"><button><i class="fas fa-home"></i> Home</button></a>
+    <br>
+    <a href="dashboard.html"><button><i class="fas fa-dashboard"></i> Dashboard</button></a>
+   <br>
+ <a href="addbook.html"><button><i class="fas fa-book"></i> Add Book</button></a>
+ <br>
+ <a href="issuebook.html"><button><i class="fas fa-book-open"></i> Issue Book</button></a>
+ <br>
+ <a href="searchbook.html"><button><i class="fas fa-search"></i> Search Book</button></a>
+ <br>
+ <a href="issue1.html"><button><i class="fas fa-list"></i> Issued Books</button></a>
+ <br>
+ <a href="return.html"><button><i class="fas fa-undo"></i> Return Book</button></a>
+ <br>
+ <a href="fine.html"><button><i class="fas fa-exclamation-triangle"></i> Penalty</button></a>
+ <br>
+    <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+  </div>
+
+  <div class="main-content">
+    <div class="form-wrapper">
+      <h2>Issue a Book</h2>
+      <form id="issueBookForm">
+        <label for="book_name">Book Name</label>
+        <input type="text" id="book_name" name="book_name" required>
+
+        <label for="student_name">Student Name</label>
+        <input type="text" id="student_name" name="student_name" required>
+
+        <label for="student_id">Student ID</label>
+        <input type="text" id="student_id" name="student_id" required>
+
+        <label for="issue_date">Issue Date</label>
+        <input type="date" id="issue_date" name="issue_date" required>
+
+        <label for="return_date">Return Date</label>
+        <input type="date" id="return_date" name="return_date" required>
+
+        <button type="submit">📤 Issue Book</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="issuebook.js">
+  </script>
+
+</body>
+</html>

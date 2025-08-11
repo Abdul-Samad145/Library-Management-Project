@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Issued Books</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css">
+ 
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2 id="e">Admin</h2>
+    <a href="home.html"><button><i class="fas fa-home"></i> Home</button></a>
+   <br>
+   <a href="dashboard.html"><button><i class="fas fa-dashboard"></i> Dashboard</button></a>
+   <br>
+<a href="addbook.html"><button><i class="fas fa-book"></i> Add Book</button></a>
+<br>
+<a href="issuebook.html"><button><i class="fas fa-book-open"></i> Issue Book</button></a>
+<br>
+<a href="searchbook.html"><button><i class="fas fa-search"></i> Search Book</button></a>
+<br>
+<a href="issue1.html"><button><i class="fas fa-list"></i> Issued Books</button></a>
+<br>
+<a href="return.html"><button><i class="fas fa-undo"></i> Return Book</button></a>
+<br>
+<a href="fine.html"><button><i class="fas fa-exclamation-triangle"></i> Penalty</button></a>
+<br>
+    <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+  </div>
+
+
+
+  <div class="main-content">
+    <h2>Issued Books List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Student Name</th>
+          <th>Book Title</th>
+          <th>Issue Date</th>
+        </tr>
+      </thead>
+      <tbody id="issuedBooksTable">
+        
+        <tr>
+          <td>Ali Khan</td>
+          <td>Data Structures</td>
+          <td>2025-05-01</td>
+        </tr>
+        <tr>
+          <td>Sara Ahmed</td>
+          <td>Java Basics</td>
+          <td>2025-05-02</td>
+        </tr>
+        <tr>
+          <td>Usman Tariq</td>
+          <td>HTML & CSS</td>
+          <td>2025-05-03</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="total-issued">
+      Total Books Issued: <span id="totalIssued">3</span>
+    </div>
+  </div>
+
+  <script src="issue1.js">
+   
+  </script>
+
+</body>
+</html>

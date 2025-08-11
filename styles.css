@@ -1,0 +1,503 @@
+
+
+/* ===== BASE STYLES ===== */
+body {
+    background-color: #ecf0f1;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    color: #2c3e50;
+    line-height: 1.6;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* =====  this is the css for the SIDEBAR ===== */
+  .sidebar {
+    width: 280px;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    padding: 25px 15px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transform: translateX(0);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .sidebar h2 {
+    margin: 0 0 30px 0;
+    font-size: 1.4rem;
+    text-align: center;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeInDown 0.6s both;
+  }
+  
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-grow: 1;
+    animation: fadeIn 0.8s both 0.2s;
+  }
+  
+  .sidebar a {
+    text-decoration: none;
+    display: block;
+    transition: all 0.3s ease;
+  }
+  
+  .sidebar a button {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    padding: 14px 20px;
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    width: 100%;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .sidebar a button::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: #3498db;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar a button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(5px);
+  }
+  
+  .sidebar a button:hover::before {
+    transform: scaleY(1);
+  }
+  
+  .sidebar a button i {
+    font-size: 16px;
+    width: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar a button:hover i {
+    transform: scale(1.1);
+  }
+  
+  .sidebar a button.active {
+    background: #3498db;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+  }
+  
+  .logout-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    animation: fadeIn 0.8s both 0.4s;
+  }
+  
+  .logout-btn {
+    background: linear-gradient(to right, #e74c3c, #c0392b);
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    width: 100%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .logout-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+  }
+  
+  .logout-btn:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+  }
+  
+  .logout-btn:hover::after {
+    left: 100%;
+  }
+  
+
+  #e{
+    color: white;
+    font-weight: bold;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* =====  this is the css for the  MAIN CONTENT ===== */
+  .main-content {
+    flex: 1;
+    background-color: #f5f7fa;
+    padding: 40px;
+    margin-left: 280px;
+    min-height: 100vh;
+    animation: fadeIn 0.6s both;
+  }
+
+
+
+
+
+
+
+
+
+
+  
+  /* this is the css for the  Form Containers */
+  .form-container, 
+  .form-wrapper {
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+  }
+  
+  h1, h2, h3 {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 25px;
+    text-align: center;
+    position: relative;
+  }
+  
+  h2::after {
+    content: '';
+    color: gold;
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, #3498db, #9b59b6);
+    margin: 10px auto 0;
+    border-radius: 3px;
+  }
+  
+
+
+
+
+
+
+
+
+
+  /*  this is the css for the  Form Elements */
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+  
+  input:focus, select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    outline: none;
+    transform: translateY(-2px);
+  }
+  
+  button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(to right, #3498db, #2980b9);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(52, 152, 219, 0.2);
+  }
+  
+  button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+  }
+  
+  button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
+  }
+  
+  button:hover::after {
+    left: 100%;
+  }
+  
+  button:active {
+    transform: translateY(0);
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* this is the css for the Tables */
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    animation: fadeIn 0.6s both;
+  }
+  
+  th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  
+  th {
+    background: linear-gradient(to right, #3498db, #2980b9);
+    color: white;
+    font-weight: 500;
+    position: sticky;
+    top: 0;
+  }
+  
+  tbody tr {
+    transition: all 0.3s ease;
+  }
+  
+  tbody tr:hover {
+    background-color: rgba(52, 152, 219, 0.05);
+    transform: translateX(5px);
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+  /* this is the css for the  Special Classes */
+  .fine-amount {
+    font-weight: bold;
+    color: #e74c3c;
+    animation: pulse 1.5s infinite;
+  }
+  
+  .total-issued {
+    margin-top: 20px;
+    font-weight: bold;
+    background-color: #3498db;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    display: inline-block;
+  }
+  
+  .search-wrapper {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    animation: fadeIn 0.6s both 0.2s;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+  /* =====this is the css for the   ANIMATIONS ===== */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+
+
+
+/*  for dashboard css  */
+
+#issuedTable,
+#returnedTable,
+#stockTable,
+#penaltyTable {
+  width: 50%;  /* You can reduce this further to 70% or 60% if needed */
+  margin: 20px auto; /* Center the tables horizontally */
+ 
+}
+
+.card {
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+  /* ===== this is the css for the  RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .sidebar {
+      transform: translateX(-100%);
+    }
+    
+    .sidebar.active {
+      transform: translateX(0);
+    }
+    
+    .main-content {
+      margin-left: 0;
+      padding: 20px;
+    }
+    
+    .form-container, 
+    .form-wrapper {
+      padding: 20px;
+    }
+  }
