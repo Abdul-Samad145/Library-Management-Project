@@ -1,4 +1,6 @@
+
 Prerequisites: 
+
 Before you begin, make sure you have met the following requirements:
 
 You have installed Node.js (v12 or higher)
@@ -8,11 +10,13 @@ You have a code editor like VS Code
 
 
 Installation: 
+
 The project uses some Node.js packages. Install them using npm:
 => npm install
 
 
-Database Setup
+Database Setup : 
+
 Create the database and tables:
  1) Inside the project, there is a file named database.txt containing all the SQL commands needed to create the database schema and tables.
 2) Open database.txt, copy all the SQL code.
